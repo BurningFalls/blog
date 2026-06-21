@@ -1,0 +1,14 @@
+src/components/comment/GiscusComment.tsx
+  h_810e32449568f3 12,14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "5a11ddc0d94f2a15144785ebeb20d3faa8669a95",
+  "prompts": {},
+  "humans": {
+    "h_810e32449568f3": {
+      "author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
