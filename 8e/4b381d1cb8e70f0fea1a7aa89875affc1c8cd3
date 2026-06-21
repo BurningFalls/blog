@@ -1,0 +1,20 @@
+CLAUDE.md
+  s_f7421103976468::t_ffdb2315dfaa7e 1-4,6-38,40
+  s_f7421103976468::t_1f33eadd7f97cc 39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "8e4b381d1cb8e70f0fea1a7aa89875affc1c8cd3",
+  "prompts": {},
+  "sessions": {
+    "s_f7421103976468": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b4222e97-4c59-49d5-843b-8dd70afc7edb",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
