@@ -1,8 +1,8 @@
 import { posts } from "@/.velite";
 
-// velite s.path()는 "posts/hello-world" 형태로 반환 — URL slug용으로 "/" → "-" 변환
+// velite s.path()는 "posts/hello-world" 형태로 반환 — URL slug용으로 "/" → "-" 변환, 날짜 prefix 제거
 export function slugify(path: string): string {
-  return path.replace(/\//g, "-");
+  return path.replace(/\//g, "-").replace(/-(\d{4}-\d{2}-\d{2})-/, "-");
 }
 
 export function getPublishedPosts() {

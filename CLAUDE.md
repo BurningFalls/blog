@@ -37,4 +37,4 @@ No `tailwind.config` file — configuration is done directly in CSS (`src/app/gl
 ## Conventions
 
 - Commits: Conventional Commits (`feat:`, `fix:`, `docs:`, etc.)
-- MDX post files: `kebab-case.mdx` under `content/posts/`
+- MDX post files: `YYYY-MM-DD-kebab-case.mdx` under `content/posts/` (date prefix is stripped from URL slug automatically)
