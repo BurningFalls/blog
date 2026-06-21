@@ -1,0 +1,22 @@
+package.json
+  s_f7421103976468::t_9341ba5308bede 14
+src/app/layout.tsx
+  s_f7421103976468::t_9b2f771320c81a 57
+  s_f7421103976468::t_534bc344d6cafa 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "92f03e55bfa476e4f04ffaa30446e8883d72eefd",
+  "prompts": {},
+  "sessions": {
+    "s_f7421103976468": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b4222e97-4c59-49d5-843b-8dd70afc7edb",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
