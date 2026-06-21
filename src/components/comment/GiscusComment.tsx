@@ -9,9 +9,9 @@ export function GiscusComment() {
   return (
     <Giscus
       repo="burningfalls/blog"
-      repoId="REPLACE_WITH_REPO_ID"
+      repoId="R_kgDOTAySUA"
       category="Announcements"
-      categoryId="REPLACE_WITH_CATEGORY_ID"
+      categoryId="DIC_kwDOTAySUM4C_lnS"
       mapping="pathname"
       reactionsEnabled="1"
       emitMetadata="0"
