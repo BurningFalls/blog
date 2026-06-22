@@ -1,0 +1,29 @@
+src/app/blog/[slug]/page.tsx
+  s_7ec3cebb914fbf::t_aee5a10f5b5f70 46
+  s_7ec3cebb914fbf::t_82fd10d4b69140 47-57,59-61,63-69,71,73-86,88,90
+  s_7ec3cebb914fbf::t_728aef7e36f8cb 45
+src/components/post/TableOfContents.tsx
+  s_7ec3cebb914fbf::t_1a5a5754251670 116
+  s_7ec3cebb914fbf::t_520846e485e22b 34-35
+  s_7ec3cebb914fbf::t_37d76ea7f2d4e6 96
+  s_7ec3cebb914fbf::t_129bf463162977 98,102-104,107-108
+  s_7ec3cebb914fbf::t_81f396a64fd33b 109
+  s_7ec3cebb914fbf::t_6b581d1ea1b7cf 113,118
+  s_7ec3cebb914fbf::t_aec655bdd2a3b9 3-4,15-28,36-39,46-51,60,63,65-67,75,83-87,99,124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "39e9ec546d703e12cb489d9d437336b2c1b467b5",
+  "prompts": {},
+  "sessions": {
+    "s_7ec3cebb914fbf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "155cdfc4-43ba-4df4-aeca-34a3d9e5eb5a",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
