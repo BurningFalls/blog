@@ -58,10 +58,8 @@ function TocLink({
 
 export function TableOfContents({ toc }: Props) {
   const [activeId, setActiveId] = useState("");
-  const [bottomOffset, setBottomOffset] = useState(0);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // 헤딩 활성화 추적
   useEffect(() => {
     const allIds = flattenToc(toc).map((url) => url.slice(1));
 
@@ -85,35 +83,13 @@ export function TableOfContents({ toc }: Props) {
     return () => observerRef.current?.disconnect();
   }, [toc]);
 
-  // 푸터가 올라올수록 목차 bottom을 밀어올림
-  useEffect(() => {
-    const footer = document.querySelector("footer");
-    if (!footer) return;
-
-    function update() {
-      const footerTop = footer!.getBoundingClientRect().top;
-      const viewportHeight = window.innerHeight;
-      const overflow = viewportHeight - footerTop + 32;
-      setBottomOffset(overflow > 0 ? overflow : 0);
-    }
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
-    update();
-
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
-
   if (toc.length === 0) return null;
 
   return (
     <nav
-      className="text-sm w-[200px] overflow-y-auto transition-[max-height] duration-150"
+      className="text-sm w-[200px] overflow-y-auto"
       style={{
-        maxHeight: `calc(100vh - 8rem - ${bottomOffset}px)`,
+        maxHeight: "calc(100vh - 8rem)",
       }}
     >
       <p className="font-semibold text-foreground mb-3 text-xs uppercase tracking-wider">

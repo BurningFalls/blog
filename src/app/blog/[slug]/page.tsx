@@ -42,11 +42,8 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <div className="mx-auto px-4 py-10 max-w-3xl">
-      <aside className="hidden xl:block fixed top-20 left-[calc(50%+384px+40px)] w-[220px]">
-        <TableOfContents toc={post.toc} />
-      </aside>
-      <article>
+    <div className="mx-auto px-4 py-10 w-full max-w-[calc(48rem+220px+40px)] xl:flex xl:gap-10 xl:items-start">
+      <article className="min-w-0 max-w-3xl w-full">
         <header className="mb-8">
           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
             <Link href="/" className="hover:text-foreground transition-colors">
@@ -91,6 +88,9 @@ export default async function PostPage({ params }: Props) {
           <GiscusComment />
         </div>
       </article>
+      <aside className="hidden xl:block w-[220px] shrink-0 sticky top-20 self-start">
+        <TableOfContents toc={post.toc} />
+      </aside>
     </div>
   );
 }
