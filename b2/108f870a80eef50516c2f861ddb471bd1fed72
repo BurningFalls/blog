@@ -1,0 +1,20 @@
+src/components/post/MDXContent.tsx
+  s_1c58ece1a19e95::t_796b25f344274e 8,10
+  s_1c58ece1a19e95::t_a203629a61f4aa 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "b2108f870a80eef50516c2f861ddb471bd1fed72",
+  "prompts": {},
+  "sessions": {
+    "s_1c58ece1a19e95": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46021dea-743d-47ec-92f8-d1e36f2f9551",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
