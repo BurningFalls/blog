@@ -42,64 +42,55 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
-      <div className="lg:grid lg:grid-cols-[1fr_200px] lg:gap-10">
-        <article>
-          {/* 헤더 */}
-          <header className="mb-8">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-              <Link href="/" className="hover:text-foreground transition-colors">
-                홈
-              </Link>
-              <span>/</span>
-              <span>{post.title}</span>
-            </div>
+    <div className="mx-auto px-4 py-10 max-w-3xl">
+      <aside className="hidden xl:block fixed top-20 left-[calc(50%+384px+40px)] w-[220px]">
+        <TableOfContents toc={post.toc} />
+      </aside>
+      <article>
+        <header className="mb-8">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+            <Link href="/" className="hover:text-foreground transition-colors">
+              홈
+            </Link>
+            <span>/</span>
+            <span>{post.title}</span>
+          </div>
 
-            <h1 className="text-2xl font-bold text-foreground leading-snug mb-3">
-              {post.title}
-            </h1>
+          <h1 className="text-2xl font-bold text-foreground leading-snug mb-3">
+            {post.title}
+          </h1>
 
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
-              {post.metadata.readingTime && (
-                <>
-                  <span>·</span>
-                  <span>읽기 {post.metadata.readingTime}분</span>
-                </>
-              )}
-            </div>
-
-            {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-4">
-                {post.tags.map((tag) => (
-                  <Link
-                    key={tag}
-                    href={`/?tag=${tag}`}
-                    className="px-2 py-0.5 text-xs rounded-full bg-muted text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {tag}
-                  </Link>
-                ))}
-              </div>
+          <div className="flex items-center gap-3 text-sm text-muted-foreground">
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            {post.metadata.readingTime && (
+              <>
+                <span>·</span>
+                <span>읽기 {post.metadata.readingTime}분</span>
+              </>
             )}
-          </header>
-
-          {/* 본문 */}
-          <MDXContent code={post.body} />
-
-          {/* 댓글 */}
-          <div className="mt-16 pt-8 border-t border-border">
-            <GiscusComment />
           </div>
-        </article>
 
-        {/* 목차 (데스크탑) */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-20">
-            <TableOfContents toc={post.toc} />
-          </div>
-        </aside>
-      </div>
+          {post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-4">
+              {post.tags.map((tag) => (
+                <Link
+                  key={tag}
+                  href={`/?tag=${tag}`}
+                  className="px-2 py-0.5 text-xs rounded-full bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {tag}
+                </Link>
+              ))}
+            </div>
+          )}
+        </header>
+
+        <MDXContent code={post.body} />
+
+        <div className="mt-16 pt-8 border-t border-border">
+          <GiscusComment />
+        </div>
+      </article>
     </div>
   );
 }
