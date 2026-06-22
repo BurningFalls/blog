@@ -1,0 +1,24 @@
+src/app/blog/[slug]/page.tsx
+  s_3ac6e29d2f249d::t_0788b266f9fc4c 45-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "1a094cc5333127ddbd5a9923900be559367ca51e",
+  "prompts": {},
+  "humans": {
+    "h_810e32449568f3": {
+      "author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3ac6e29d2f249d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "301c6f98-ee2f-4014-9d08-be1c00a2f77b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
