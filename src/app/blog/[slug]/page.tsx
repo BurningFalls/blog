@@ -44,7 +44,7 @@ export default async function PostPage({ params }: Props) {
   return (
     <div className="mx-auto px-4 py-10 w-full max-w-[calc(48rem+220px+40px+220px+40px)] xl:flex xl:gap-10 xl:items-start xl:justify-center">
       <div className="hidden xl:block w-[220px] shrink-0" />
-      <article className="min-w-0 max-w-3xl w-full">
+      <article className="min-w-0 max-w-3xl w-full mx-auto xl:mx-0">
         <header className="mb-8">
           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
             <Link href="/" className="hover:text-foreground transition-colors">
