@@ -54,3 +54,30 @@ export function getSearchablePosts(): PostMeta[] {
     category,
   }));
 }
+
+export type CategoryGroup = {
+  category: string;
+  posts: PostMeta[];
+};
+
+export function getPostsGroupedByCategory(): CategoryGroup[] {
+  const published = getPublishedPosts();
+  const map = new Map<string, PostMeta[]>();
+
+  for (const post of published) {
+    const cat = post.category ?? "미분류";
+    if (!map.has(cat)) map.set(cat, []);
+    map.get(cat)!.push({
+      title: post.title,
+      description: post.description,
+      date: post.date,
+      slug: slugify(post.slug),
+      tags: post.tags,
+      category: post.category,
+    });
+  }
+
+  return Array.from(map.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([category, posts]) => ({ category, posts }));
+}

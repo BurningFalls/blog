@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getPublishedPosts, getPostBySlug, slugify } from "@/lib/posts";
+import { getPublishedPosts, getPostBySlug, slugify, getPostsGroupedByCategory } from "@/lib/posts";
 import { MDXContent } from "@/components/post/MDXContent";
 import { TableOfContents } from "@/components/post/TableOfContents";
+import { PostNavSidebar } from "@/components/post/PostNavSidebar";
 import { GiscusComment } from "@/components/comment/GiscusComment";
 import { formatDate } from "@/lib/utils";
 
@@ -41,9 +42,13 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  const groups = getPostsGroupedByCategory();
+
   return (
     <div className="mx-auto px-4 py-10 w-full max-w-[calc(48rem+220px+40px+220px+40px)] xl:flex xl:gap-10 xl:items-start xl:justify-center">
-      <div className="hidden xl:block w-[220px] shrink-0" />
+      <aside className="hidden xl:block w-[220px] shrink-0 sticky top-20 self-start">
+        <PostNavSidebar groups={groups} />
+      </aside>
       <article className="min-w-0 max-w-3xl w-full mx-auto xl:mx-0">
         <header className="mb-8">
           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
