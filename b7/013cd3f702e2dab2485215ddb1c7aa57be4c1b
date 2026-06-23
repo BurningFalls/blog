@@ -1,0 +1,29 @@
+src/app/blog/[slug]/page.tsx
+  s_3ac6e29d2f249d::t_5c39d30acbca0d 4,7
+  s_3ac6e29d2f249d::t_3c315a0052da51 45-46,49-51
+src/components/post/PostNavSidebar.tsx
+  s_3ac6e29d2f249d::t_8aaf4074290ed2 1-47
+src/lib/posts.ts
+  s_3ac6e29d2f249d::t_df04622ed9fbeb 57-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "b7013cd3f702e2dab2485215ddb1c7aa57be4c1b",
+  "prompts": {},
+  "humans": {
+    "h_810e32449568f3": {
+      "author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3ac6e29d2f249d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "301c6f98-ee2f-4014-9d08-be1c00a2f77b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
