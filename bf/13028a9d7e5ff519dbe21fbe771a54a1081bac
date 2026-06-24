@@ -1,0 +1,24 @@
+content/posts/2026-06-22-claude-code-git-skills.mdx
+  s_9cd4774752802d::t_e2e58c93f4f945 43
+  s_9cd4774752802d::t_ef2bfca513af8b 159
+  s_9cd4774752802d::t_0c77f0956bdbd4 232
+  s_9cd4774752802d::t_b82a882d9adf20 214
+  s_9cd4774752802d::t_a893b282ed6c6b 197
+  s_9cd4774752802d::t_76b8bcc0bf0322 45,49,68,79,101,105,117,140,145,161,165,187,199,203,216,234,238,255,270,274,311,322,326
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "bf13028a9d7e5ff519dbe21fbe771a54a1081bac",
+  "prompts": {},
+  "sessions": {
+    "s_9cd4774752802d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "84c9f823-a4c5-4c50-8da0-4cddd44ae977",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
