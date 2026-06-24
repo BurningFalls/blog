@@ -1,0 +1,19 @@
+content/posts/2026-06-22-claude-code-git-skills.mdx
+  s_ae3f8760caa217::t_76418285365515 342
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "b55860d064c4d355e4536c1e1e12c4c8f762ad96",
+  "prompts": {},
+  "sessions": {
+    "s_ae3f8760caa217": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a552de0-6161-4822-87e7-f5faccbae892",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
