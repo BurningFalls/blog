@@ -1,0 +1,23 @@
+content/posts/2026-06-28-claude-code-agent-view.mdx
+  s_9a42adac8ae19a::t_90cf69bce79199 5
+content/posts/2026-06-24-llm-token-cost-optimization.mdx
+  s_9a42adac8ae19a::t_b2a3ec6bf937e2 5
+content/posts/2026-06-22-claude-code-git-skills.mdx
+  s_9a42adac8ae19a::t_acb15682efd01a 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "a077891622ef9d250e345378ac900cd5f88b95b5",
+  "prompts": {},
+  "sessions": {
+    "s_9a42adac8ae19a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0fef9d2b-dc88-47d3-9dc6-6b3ec6673711",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
