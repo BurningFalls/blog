@@ -1,0 +1,118 @@
+---
+title: "Claude Code Agent View로 백그라운드 세션 관리하기"
+description: "공식 문서를 기반으로 Agent View, 백그라운드 세션, Worktree의 동작 구조를 정리합니다."
+date: 2026-06-28
+tags: ["Claude Code", "Agent View", "개발 도구"]
+category: "개발 도구"
+published: true
+---
+
+Claude Code 공식 문서([Manage multiple agents with agent view](https://code.claude.com/docs/en/agent-view))를 살펴보다가 `claude agents`라는 명령어를 발견했습니다.
+
+`claude`와 달리 실행하면 세션 목록이 나열된 패널이 열립니다. 이 글에서는 그 패널이 무엇을 보여주는지부터 시작해, 백그라운드 세션이 어떻게 파일을 격리하는지까지 정리합니다.
+
+## Agent View: 백그라운드 세션 전용 패널
+
+Agent View는 2026년 5월 11일 Research Preview로 공개된 기능입니다. 공식 문서의 정의는 다음과 같습니다.
+
+> "Agent view, opened with `claude agents`, is one screen for all your background sessions: what's running, what needs your input, and what's done."
+
+**백그라운드 세션(background sessions)만** 표시하는 패널입니다.
+
+```
+←←   또는   claude agents
+```
+
+터미널에서 왼쪽 화살표를 두 번 누르거나, `claude agents`를 직접 실행하면 열립니다. 패널에서는 백그라운드 세션마다 현재 상태(작업 중 / 입력 대기 / 완료), 마지막 응답 내용, 마지막 상호작용 시간을 확인할 수 있습니다.
+
+```text
+Needs input
+  ✻ auth refactor       needs input: use JWT or session tokens?    1m
+
+Working
+  ✽ feat/payment        Edit src/payment/PaymentService.ts         3m
+  ✽ fix/login-bug       run tests · 12 passed, 2 remaining         2m
+
+Completed
+  ✻ docs update         result: README and API docs updated         9m
+```
+
+세션을 선택하면 미리보기로 확인하고, Enter를 누르면 해당 세션으로 직접 진입합니다. 입력이 필요한 경우 패널 안에서 인라인으로 바로 답변할 수 있습니다.
+
+## 백그라운드 세션: 터미널 없이 실행되는 독립 대화
+
+Agent View에서 관리하는 대상인 백그라운드 세션은 터미널이 연결되지 않은 상태에서도 계속 실행되는 독립된 Claude Code 대화입니다. 세 가지 방법으로 생성할 수 있습니다.
+
+```bash
+# 현재 포그라운드 세션을 백그라운드로 전환
+/bg
+
+# 처음부터 백그라운드 세션으로 시작
+claude --bg "PR #42 리뷰 후 인라인 코멘트 게시"
+
+# Agent View 입력창에서 프롬프트 입력 후 Enter
+```
+
+## Worktree: 백그라운드 세션의 기본 파일 격리 방식
+
+백그라운드 세션을 띄우고 파일을 편집하면, 포그라운드에서 작업 중인 파일과 충돌하는 것 아닌가 하는 의문이 생깁니다. 공식 문서는 이 문제를 다음과 같이 해결합니다.
+
+> "Every background session, whether started from agent view, `/bg`, or `claude --bg`, starts in your working directory. Before editing files, Claude moves the session into an isolated git worktree under `.claude/worktrees/`, so parallel sessions can read the same checkout but each writes to its own."
+
+파일을 수정하기 전에 백그라운드 세션이 **자동으로 격리된 worktree로 이동**합니다. 별도 설정 없이 기본으로 적용됩니다.
+
+Worktree는 파일을 복사하지 않습니다. 동일한 `.git` 데이터를 포인터로 공유하면서 브랜치와 작업 디렉토리만 분리합니다.
+
+```
+my-project/               ← 내 실제 작업 디렉토리
+├── .git/                 ← 실제 데이터 (공유)
+└── src/
+
+.claude/worktrees/feat/   ← 백그라운드 세션이 자동으로 이동하는 곳
+├── .git (포인터)          ← 메인 .git을 가리킴
+└── src/                  ← 해당 브랜치 기준 파일
+```
+
+| 공유되는 것 | 각자 독립적인 것 |
+|-------------|-----------------|
+| .git/objects (파일 데이터) | 현재 브랜치 (HEAD) |
+| 커밋 히스토리 | 작업 디렉토리 상태 |
+| 브랜치 목록 | node_modules |
+
+### gitignored 파일 복사
+
+Worktree는 git이 추적하지 않는 파일(gitignored)은 포함하지 않습니다. `.env`, `.env.local` 같은 파일이 worktree에 없어 오류가 날 수 있는데, `.worktreeinclude` 파일을 프로젝트 루트에 추가하면 자동으로 복사됩니다.
+
+```text .worktreeinclude
+.env
+.env.local
+config/secrets.json
+```
+
+### 자동 격리가 적용되지 않는 경우
+
+공식 문서에서 worktree로 이동하지 않는 예외 케이스를 명시합니다.
+
+- 세션이 이미 linked git worktree 안에 있을 때
+- 작업 디렉토리가 git 저장소가 아니고 `WorktreeCreate` hook도 없을 때
+- 쓰기 대상이 작업 디렉토리 밖일 때
+
+git 저장소가 아닌 환경에서는 백그라운드 세션이 working copy를 직접 편집하므로, 같은 파일을 건드리는 병렬 세션을 주의해야 합니다.
+
+### bgIsolation 설정
+
+git worktree를 사용하기 어려운 저장소라면 자동 격리를 끌 수 있습니다.
+
+```json
+{
+  "worktree": {
+    "bgIsolation": "none"
+  }
+}
+```
+
+이 설정을 적용하면 백그라운드 세션이 worktree로 이동하지 않고 working copy를 직접 편집합니다. (v2.1.143 이상 필요)
+
+## 마치며
+
+Agent View는 백그라운드 세션을 한 화면에서 관리하는 패널입니다. 백그라운드 세션은 파일 편집 시 자동으로 worktree로 격리되어 포그라운드 세션과의 충돌을 방지합니다. 여러 작업을 병렬로 돌리면서 필요할 때만 개입하는 워크플로우를 만들 때 유용합니다.
