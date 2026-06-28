@@ -1,0 +1,30 @@
+content/posts/2026-06-28-claude-code-agent-view.mdx
+  s_66fdcd9dbfb1f8::t_acbc47acde6da7 3
+  s_66fdcd9dbfb1f8::t_f58c7747ed0064 5
+  s_66fdcd9dbfb1f8::t_cc021b10b0c860 2
+  s_66fdcd9dbfb1f8::t_bda2b8f4444a6a 10,18,23,26,28-30,32-34,36-37,40,46-51,105
+  s_66fdcd9dbfb1f8::t_4d031d3dd01b99 16,56,60,71,81,83,86-95,97-102,104,106-113,115
+  s_66fdcd9dbfb1f8::t_6f4013c33293a9 39,41,59,64,68,76-80
+  s_66fdcd9dbfb1f8::t_98c2d18412a71f 1,4,6-9,11,13,15,17,19,21-22,24-25,27,31,35,38,43,45,52,55,61,63,65-67,69-70,72-75,103,117
+  s_66fdcd9dbfb1f8::t_3857034ab34a38 58,84,116
+  s_66fdcd9dbfb1f8::t_ea6d60c63eab64 14,42,44,53-54,57,62,82,85,96,114
+  s_66fdcd9dbfb1f8::t_6b460b01a4dae4 20
+  s_66fdcd9dbfb1f8::t_6e365182ee7dd2 12
+  s_66fdcd9dbfb1f8::t_50167a410a6f2e 118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "33f12a54efceacca5f911e44cbe76b2f7761fb17",
+  "prompts": {},
+  "sessions": {
+    "s_66fdcd9dbfb1f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3e0ff48f-6db2-403a-b717-6350cf653b0d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "BurningFalls <sherlocky31415@gmail.com>"
+    }
+  }
+}
